@@ -1,0 +1,27 @@
+# can add multiple modules here
+obj-m += debug_module.o
+
+# after all -C options are processed... 
+
+#  ' line can point to the absolute pathname of the current working directory.
+
+# a missing ' within Makefile, sudoers security policy will enable the env_reset.
+
+# env_reset restricts environment variables inluding path variables from user environmnt.
+
+# environment variables inluding path variables from the user environmnt are specified but set to default.
+
+PWD := $(CURDIR)
+
+# initialized, load the module into the kernel.
+all:
+    make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
+# clean, unload the module from the kernel.
+clean:
+    make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
+
+
+
+
+
+
